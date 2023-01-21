@@ -5,9 +5,9 @@ import { AiOutlineSearch } from 'react-icons/ai'
 
 export default function Header(){
   return (
-    <div className="grid grid-cols-3 shadow-md top-0">
+    <header className="sticky grid grid-cols-3 bg-white shadow-md top-0 p-5">
       {/* Left Side*/}
-      <div className="relative h-24 cursor-pointer">
+      <div className="relative flex items-center h-12 cursor-pointer my-auto">
         <Image
           src={Logo}
           layout="fill"
@@ -15,11 +15,11 @@ export default function Header(){
         />
       </div>
       {/* Search Bar */}
-      <div className="" >
-        <input type="text" placeholder="Search for your destination..." />
-        <AiOutlineSearch />
+      <div className="flex items-center border-2 rounded-full md:shadow-md" >
+        <input type="text" placeholder="Start your search" className="flex-grow pl-5 bg-transparent outline-none text-sm md:text-lg" />
+        <AiOutlineSearch size={30} style={{ padding: "5px" }} className="hidden md:inline-flex md:mx-2 bg-[#FF5A5F] text-white rounded-full cursor-pointer "/>
       </div>
       {/* Right side */}
-    </div>
+    </header>
   )
 }
