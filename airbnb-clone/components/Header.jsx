@@ -11,6 +11,7 @@ export default function Header(){
       {/* Left Side*/}
       <div className="relative flex items-center h-12 cursor-pointer my-auto">
         <Image
+          alt=""
           src={Logo}
           layout="fill"
           objectFit="contain"
