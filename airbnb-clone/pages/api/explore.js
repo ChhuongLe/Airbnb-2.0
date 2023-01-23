@@ -2,22 +2,22 @@ export default function explore(req, res) {
   res.status(200).json([
     {
       img: "https://cdn1.iconfinder.com/data/icons/san-francisco/100/San_Francisco_copy_5-512.png",
-      location: "San Francico, California",
+      location: "San Francico",
       distance: "20-minute drive",
     },
     {
       img: "https://cdn3.iconfinder.com/data/icons/world-cities-2/256/100-512.png",
-      location: "San Jose, California",
+      location: "San Jose",
       distance: "50-minute drive",
     },
     {
       img: "https://cdn1.iconfinder.com/data/icons/united-states-of-america-gradient-freedom-trail/512/San_Diego-512.png",
-      location: "San Diego, California",
+      location: "San Diego",
       distance: "8-hour drive",
     },
     {
       img: "https://cdn1.iconfinder.com/data/icons/united-states-of-america-gradient-freedom-trail/512/Hollywood-512.png",
-      location: "Los Angeles, California",
+      location: "Los Angeles",
       distance: "6-hour drive",
     },
     {
@@ -27,7 +27,7 @@ export default function explore(req, res) {
     },
     {
       img: "https://cdn1.iconfinder.com/data/icons/united-states-of-america-gradient-freedom-trail/512/California-512.png",
-      location: "Berekely, California",
+      location: "Berekely",
       distance: "35-minute drive"
     },
     {
