@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Logo from '../public/airbnb-logo.png'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { BiGlobe } from 'react-icons/bi'
+import { AiOutlineMenu, AiOutlineUser } from 'react-icons/ai'
 
 export default function Header(){
   return (
@@ -21,11 +22,12 @@ export default function Header(){
         <AiOutlineSearch size={30} style={{ padding: "5px" }} className="hidden md:inline-flex md:mx-2 bg-[#FF5A5F] text-white rounded-full cursor-pointer "/>
       </div>
       {/* Right side */}
-      <div className="flex items-center px-3">
-        <p className="px-5">Airbnb your home</p>
-        <BiGlobe size={20} style={{ paddingRight: "3px" }} />
-        <div>
-          
+      <div className="flex items-center space-x-3 justify-end">
+        <p className="hidden  md:inline px-5 cursor-pointer">Become a host</p>
+        <BiGlobe size={25} style={{ paddingRight: "3px" }} className="cursor-pointer"/>
+        <div className="flex items-center space-x-2 border-2 p-2 rounded-full cursor-pointer">
+          <AiOutlineMenu />
+          <AiOutlineUser />
         </div>
       </div>
     </header>
