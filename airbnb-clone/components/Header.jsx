@@ -7,7 +7,7 @@ import { AiOutlineMenu, AiOutlineUser } from 'react-icons/ai'
 
 export default function Header(){
   return (
-    <header className="sticky grid grid-cols-3 bg-white shadow-md top-0 p-5">
+    <header className="sticky grid grid-cols-3 bg-white shadow-md top-0 p-5 z-20">
       {/* Left Side*/}
       <div className="relative flex items-center h-12 cursor-pointer my-auto">
         <Image
