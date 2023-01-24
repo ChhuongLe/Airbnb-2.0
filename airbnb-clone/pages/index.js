@@ -1,12 +1,14 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Header from '../components/Header'
-import Banner from '../components/Banner'
-import SmallCard from '../components/SmallCard'
-import MediumCard from '../components/MediumCard'
-import LargeCard from '../components/LargeCard'
-import Footer from '../components/Footer'
-import { fetchCategory } from '../../helpers'
+import Head from 'next/head';
+import Image from 'next/image';
+import Header from '../components/Header';
+import Banner from '../components/Banner';
+import SmallCard from '../components/SmallCard';
+import MediumCard from '../components/MediumCard';
+import LargeCard from '../components/LargeCard';
+import Footer from '../components/Footer';
+import {
+  fetchCategory,
+  fetchExplore  } from '../helper.js'
 
 export default function Home({exploreData, categories}) {
   return (
@@ -22,9 +24,9 @@ export default function Home({exploreData, categories}) {
         <section className="pt-6 pb-6">
           <h2 className="text-4xl font-semibold pb-5">Explore Nearby</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grids-col-4">
-            {exploreData.map((item, i)=>{
+            {exploreData.map((item)=>{
               return (
-                <SmallCard key={i} img={item.img} location={item.location} distance={item.distance} />
+                <SmallCard key={item._id} img={item.image} location={item.location} distance={item.distance} />
               );
             })}
           </div>
@@ -35,7 +37,7 @@ export default function Home({exploreData, categories}) {
             <div className="flex space-x-4 overflow-x-scroll scrollbar-hide p-3 -ml-3">
               {categories.map((item)=>{
                 return (
-                  <MediumCard image={item.img} category={item.category} />
+                  <MediumCard key={item._id} image={item.image} category={item.title} />
                 );
               })}
             </div>
@@ -58,11 +60,8 @@ export default function Home({exploreData, categories}) {
 }
 
 export async function getStaticProps() {
-  const exploreData = await fetch("http://localhost:3000/api/explore")
-  .then((res)=> res.json())
-
-  const categories = await fetch("http://localhost:3000/api/categories")
-  .then((res)=> res.json())
+  const categories = await fetchCategory();
+  const exploreData = await fetchExplore();
 
   return {
     props:{
