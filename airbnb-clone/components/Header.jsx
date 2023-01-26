@@ -31,7 +31,10 @@ export default function Header(){
     router.push({
       pathname: '/search',
       query:{
-        
+        location: searchInput,
+        startDate: startDate.toISOString(),
+        endData: endDate.toISOString(),
+        numberOfGuests: numberOfGuests,
       }
     })
   }

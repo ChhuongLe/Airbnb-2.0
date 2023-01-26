@@ -1,14 +1,27 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useRouter } from 'next/dist/client/router'
+
 export default function Search() {
+  const router = useRouter();
+  const {location, startDate, endDate, numberOfGuests} = router.query;
+
+  let checkedLocation = location.split('');
+  checkedLocation[0]=checkedLocation[0].toUpperCase();
+
+  for(let i=0; i < checkedLocation.length; i++) {
+    if(checkedLocation[i] === ' ') checkedLocation[i+1]=checkedLocation[i+1].toUpperCase();
+  }
+  checkedLocation=checkedLocation.join('');
+
   return(
     <div className="h-screen">
       <Header />
       <main className="flex">
         <section className="flex-grow pt-14 px-5">
-          <p className="text-xs">300+ stays for 5 guests</p>
+          <p className="text-xs">300+ stays for {numberOfGuests} guests</p>
 
-          <h1 className="text-3xl font-semibold mt-2 mb-6">Stays in Mars</h1>
+          <h1 className="text-3xl font-semibold mt-2 mb-6">Stays in {checkedLocation}</h1>
           <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
             <p className="button">Cancellation Flexibility</p>
             <p className="button">Type of Places</p>
