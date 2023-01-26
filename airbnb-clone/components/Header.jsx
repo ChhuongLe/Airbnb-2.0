@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
 import Image from 'next/image'
 import Logo from '../public/airbnb-logo.png'
@@ -15,6 +16,7 @@ export default function Header(){
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
   const [numberOfGuests, setNumberOfGuests] = useState(1)
+  const router = useRouter();
 
   const handleSelect = (ranges) =>{
     setStartDate(ranges.selection.startDate);
@@ -25,6 +27,15 @@ export default function Header(){
     setSearchInput('');
   }
 
+  const handleSearch = () => {
+    router.push({
+      pathname: '/search',
+      query:{
+        
+      }
+    })
+  }
+
   const selectionRange = {
     startDate: startDate,
     endDate: endDate,
@@ -33,7 +44,7 @@ export default function Header(){
   return (
     <header className="sticky grid grid-cols-3 bg-white shadow-md top-0 p-5 z-20">
       {/* Left Side*/}
-      <div className="relative flex items-center h-12 cursor-pointer my-auto">
+      <div onClick={()=>router.push("/")} className="relative flex items-center h-12 cursor-pointer my-auto">
         <Image
           alt=""
           src={Logo}
@@ -43,7 +54,7 @@ export default function Header(){
       </div>
       {/* Search Bar */}
       <div className="flex items-center border-2 rounded-full md:shadow-md" >
-        <input value={searchInput} onChange={(e)=>setSearchInput(e.target.value)} type="text" placeholder="Start your search" className="flex-grow pl-5 bg-transparent outline-none text-sm md:text-lg text-gray-600 placeholder-gray-400" />
+        <input value={searchInput} onChange={(e)=>setSearchInput(e.target.value)} type="text" placeholder="Start your search" className="flex-grow pl-5 bg-transparent outline-none text-xs sm:text-sm md:text-lg text-gray-600 placeholder-gray-400" />
         <AiOutlineSearch size={30} style={{ padding: "5px" }} className="hidden md:inline-flex md:mx-2 bg-[#FF5A5F] text-white rounded-full cursor-pointer "/>
       </div>
       {/* Right side */}
@@ -71,7 +82,7 @@ export default function Header(){
               </div>
               <div className="flex">
                 <button onClick={resetInput} className="flex-grow text-gray-500">Cancel</button>
-                <button className="flex-grow text-red-400">Search</button>
+                <button onClick={handleSearch} className="flex-grow text-red-400">Search</button>
               </div>
           </div>
         )}
