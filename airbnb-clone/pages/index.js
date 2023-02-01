@@ -8,9 +8,11 @@ import LargeCard from '../components/LargeCard';
 import Footer from '../components/Footer';
 import {
   fetchCategory,
-  fetchExplore  } from '../helper.js'
+  fetchExplore,
+  fetchListings  } from '../helper.js'
 
-export default function Home({exploreData, categories}) {
+export default function Home({exploreData, categories, listingData}) {
+  console.log(listingData.rows)
   return (
     <div>
       <Head>
@@ -62,11 +64,12 @@ export default function Home({exploreData, categories}) {
 export async function getStaticProps() {
   const categories = await fetchCategory();
   const exploreData = await fetchExplore();
-
+  const listingData = await fetchListings();
   return {
     props:{
       exploreData,
       categories,
+      listingData,
     }
   }
 }
