@@ -11,7 +11,7 @@ import { DateRangePicker } from 'react-date-range'
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 
-export default function Header(){
+export default function Header({placeholder }){
   const [searchInput, setSearchInput] = useState('')
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
@@ -33,7 +33,7 @@ export default function Header(){
       query:{
         location: searchInput,
         startDate: startDate.toISOString(),
-        endData: endDate.toISOString(),
+        endDate: endDate.toISOString(),
         numberOfGuests: numberOfGuests,
       }
     })
@@ -57,7 +57,7 @@ export default function Header(){
       </div>
       {/* Search Bar */}
       <div className="flex items-center border-2 rounded-full md:shadow-md" >
-        <input value={searchInput} onChange={(e)=>setSearchInput(e.target.value)} type="text" placeholder="Start your search" className="flex-grow pl-5 bg-transparent outline-none text-xs sm:text-sm md:text-lg text-gray-600 placeholder-gray-400" />
+        <input value={searchInput} onChange={(e)=>setSearchInput(e.target.value)} type="text" placeholder={placeholder || "Start your search"} className="flex-grow pl-5 bg-transparent outline-none text-xs sm:text-sm md:text-lg text-gray-600 placeholder-gray-400" />
         <AiOutlineSearch size={30} style={{ padding: "5px" }} className="hidden md:inline-flex md:mx-2 bg-[#FF5A5F] text-white rounded-full cursor-pointer "/>
       </div>
       {/* Right side */}
