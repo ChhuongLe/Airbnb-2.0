@@ -10,8 +10,8 @@ export const fetchExplore = async () => {
   return exploreData;
 }
 
-export const fetchListings = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getListings`)
+export const fetchListings = async (location) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getListings/${location}`)
   const listingData = await res.json();
   return listingData;
 }

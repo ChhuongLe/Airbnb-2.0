@@ -2,6 +2,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useRouter } from 'next/dist/client/router'
 import { format } from 'date-fns';
+import { fetchListings } from '../helper.js';
 
 export default function Search() {
   const router = useRouter();
@@ -42,12 +43,5 @@ export default function Search() {
       </main>
       <Footer />
     </div>
-  )
-}
-
-export async function getServerSideProps() {
-  const searchResults await fetch("https://links.papareact.com/isz")
-  return(
-
   )
 }

@@ -37,6 +37,7 @@ export default function Header({placeholder }){
         numberOfGuests: numberOfGuests,
       }
     })
+
   }
 
   const selectionRange = {

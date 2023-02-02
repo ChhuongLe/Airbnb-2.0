@@ -9,10 +9,9 @@ import Footer from '../components/Footer';
 import {
   fetchCategory,
   fetchExplore,
-  fetchListings  } from '../helper.js'
+} from '../helper.js'
 
 export default function Home({exploreData, categories, listingData}) {
-  console.log(listingData.rows)
   return (
     <div>
       <Head>
@@ -20,7 +19,6 @@ export default function Home({exploreData, categories, listingData}) {
       </Head>
       <Header />
       <Banner />
-
       <main className="relative max-w-7xl mx-auto px-8 sm:px-16">
         {/* Small Cards component */}
         <section className="pt-6 pb-6">
@@ -64,12 +62,11 @@ export default function Home({exploreData, categories, listingData}) {
 export async function getStaticProps() {
   const categories = await fetchCategory();
   const exploreData = await fetchExplore();
-  const listingData = await fetchListings();
+
   return {
     props:{
       exploreData,
       categories,
-      listingData,
     }
   }
 }
