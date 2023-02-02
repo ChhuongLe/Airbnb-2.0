@@ -8,21 +8,11 @@ export default function Search() {
   const router = useRouter();
   const {location, startDate, endDate, numberOfGuests} = router.query;
 
+  let formattedLocation = location.toLowerCase().replace(/\s/g, '');
+
   const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy")
   const range = `${formattedStartDate} to ${formattedEndDate}`
-
-  let checkedLocation = 'No Search Found';
-
-  if(location !== null) {
-    checkedLocation = location.split('');
-    checkedLocation[0]=checkedLocation[0].toUpperCase();
-
-    for(let i=0; i < checkedLocation.length; i++) {
-      if(checkedLocation[i] === ' ') checkedLocation[i+1]=checkedLocation[i+1].toUpperCase();
-    }
-    checkedLocation=checkedLocation.join('');
-  }
 
   return(
     <div className="h-screen">
@@ -31,7 +21,7 @@ export default function Search() {
         <section className="flex-grow pt-14 px-5">
           <p className="text-xs">300+ Stays from {range} - for {numberOfGuests} guest(s)</p>
 
-          <h1 className="text-3xl font-semibold mt-2 mb-6">Stays in {checkedLocation}</h1>
+          <h1 className="text-3xl font-semibold mt-2 mb-6">Stays in {location}</h1>
           <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
             <p className="button">Cancellation Flexibility</p>
             <p className="button">Type of Places</p>
