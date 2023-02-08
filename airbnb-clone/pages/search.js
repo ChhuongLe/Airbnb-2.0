@@ -1,3 +1,4 @@
+import { useEffect,useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useRouter } from 'next/dist/client/router'
@@ -7,8 +8,25 @@ import { fetchListings } from '../helper.js';
 export default function Search() {
   const router = useRouter();
   const {location, startDate, endDate, numberOfGuests} = router.query;
+  const [data, setData] = useState([]);
 
   let formattedLocation = location.toLowerCase().replace(/\s/g, '');
+
+  useEffect(()=> {
+    fetch(`http://localhost:3000/api/getListing/${formattedLocation}`)
+      .then(res => {
+        if(res.ok) {
+          return res.json()
+        }
+        throw res;
+      })
+      .then(data => {
+        setData(data)
+      })
+      .catch(error =>{
+        console.log("error fetching data");
+      });
+  },[])
 
   const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy")
@@ -35,3 +53,5 @@ export default function Search() {
     </div>
   )
 }
+
+// Create function to pass in location data when searched for.

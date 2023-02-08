@@ -11,7 +11,7 @@ export const fetchExplore = async () => {
 }
 
 export const fetchListings = async (location) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getListings/?location=${location}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getListing/?location=${location}`)
   const listingData = await res.json();
   return listingData;
 }
