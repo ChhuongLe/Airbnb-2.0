@@ -10,6 +10,7 @@ export default function Search() {
   const router = useRouter();
   const {location, startDate, endDate, numberOfGuests} = router.query;
   const [data, setData] = useState([]);
+  const [numItems, setNumItems] = useState(10);
 
   let formattedLocation = location.toLowerCase().replace(/\s/g, '');
 
@@ -27,7 +28,8 @@ export default function Search() {
       .catch(error =>{
         console.log("error fetching data");
       });
-  },[])
+  },[]);
+
   const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy")
   const range = `${formattedStartDate} to ${formattedEndDate}`
@@ -47,7 +49,7 @@ export default function Search() {
             <p className="button">Rooms and Beds</p>
             <p className="button">More Filters</p>
           </div>
-          {data.map(el => {
+          {data.slice(0, numItems).map(el => {
             return (
               <InfoCard
                 key={el.id}
