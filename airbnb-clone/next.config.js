@@ -10,7 +10,8 @@ const nextConfig = {
     'www.sunset.com',
     'www.livelikeitstheweekend.com',
     'cdn.houseplansservices.com',
-    'd3544la1u8djza.cloudfront.net']
+    'd3544la1u8djza.cloudfront.net',
+    "a0.muscache.com"]
   }
 }
 
