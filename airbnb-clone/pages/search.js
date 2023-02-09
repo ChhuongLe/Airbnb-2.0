@@ -58,6 +58,9 @@ export default function Search() {
                 image={el.image_url}
                 price={el.price}
                 rating={el.rating}
+                neighborhood={el.neighborhood}
+                room_type={el.room_type}
+                accomodates={el.accomodates}
               />
             )
           })}
