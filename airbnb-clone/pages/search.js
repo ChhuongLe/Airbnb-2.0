@@ -13,6 +13,7 @@ export default function Search() {
   const [numItems, setNumItems] = useState(10);
 
   let formattedLocation = location.toLowerCase().replace(/\s/g, '');
+  let lengthOfStay = 0;
 
   useEffect(()=> {
     fetch(`http://localhost:3000/api/getListing/${formattedLocation}`)
@@ -34,7 +35,11 @@ export default function Search() {
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy")
   const range = `${formattedStartDate} to ${formattedEndDate}`
 
-  console.log(data);
+  const sDate = new Date(startDate)
+  const eDate = new Date(endDate)
+
+  let numDays = (eDate.getTime() - sDate.getTime()) / (1000 * 3600 * 24);
+
   return(
     <div className="h-screen">
       <Header placeholder={`${location} | ${range} | ${numberOfGuests} guests`} />
@@ -61,6 +66,10 @@ export default function Search() {
                 neighborhood={el.neighborhood}
                 room_type={el.room_type}
                 accomodates={el.accomodates}
+                guests={numberOfGuests}
+                beds={el.num_beds}
+                bedrooms={el.num_bedrooms}
+                numDays={numDays}
               />
             )
           })}
