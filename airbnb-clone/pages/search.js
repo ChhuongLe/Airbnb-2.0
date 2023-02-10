@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import { fetchListings } from '../helper.js';
 import InfoCard from '../components/InfoCard';
 import MapBox from '../components/MapBox';
+import { fetchLocation } from '../helper.js'
 
 export default function Search() {
   const router = useRouter();
@@ -17,18 +18,12 @@ export default function Search() {
   let lengthOfStay = 0;
 
   useEffect(()=> {
-    fetch(`http://localhost:3000/api/getListing/${formattedLocation}`)
-      .then(res => {
-        if(res.ok) {
-          return res.json()
-        }
-        throw res;
-      })
-      .then(data => {
+    fetchLocation(formattedLocation)
+      .then(data=>{
         setData(data.rows)
       })
-      .catch(error =>{
-        console.log("error fetching data");
+      .catch(error=>{
+        console.log("error fetching data")
       });
   },[]);
 
@@ -42,7 +37,7 @@ export default function Search() {
   let numDays = (eDate.getTime() - sDate.getTime()) / (1000 * 3600 * 24);
 
   return(
-    <div className="h-screen">
+    <div className="h-full">
       <Header placeholder={`${location} | ${range} | ${numberOfGuests} guests`} />
       <main className="flex">
         <section className="flex-grow pt-14 px-5">
@@ -75,7 +70,7 @@ export default function Search() {
             )
           })}
         </section>
-        <section className="hidden xl:inline-flex xl:min-w-[600px] xl:h-full">
+        <section className="hidden xl:inline-flex xl:min-w-[600px]">
           <MapBox />
         </section>
       </main>

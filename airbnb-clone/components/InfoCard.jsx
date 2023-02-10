@@ -26,7 +26,7 @@ export default function InfoCard({ title, type, image, price, rating, neighborho
             {rating}
           </p>
           <div>
-            <p className="text-lg lg:text-2xl font-semibold pb-2">{pricePerNight}/night</p>
+            <p className="text-lg lg:text-2xl font-semibold pb-2">${pricePerNight}/night</p>
             <p className="text-right font-extralight">${total} total</p>
           </div>
         </div>

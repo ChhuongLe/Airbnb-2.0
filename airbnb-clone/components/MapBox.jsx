@@ -3,11 +3,12 @@ import ReactMapGL from 'react-map-gl';
 
 export default function MapBox() {
   const [viewport, setViewport] = useState({
-    width: '100%',
-    height: '100%',
     longitude: -122.4,
     latitude: 37.8,
     zoom: 11,
+    width: "100%",
+    height: "100%",
+    position: "relative",
   })
   return (
     <ReactMapGL
