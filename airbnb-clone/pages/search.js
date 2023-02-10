@@ -5,6 +5,7 @@ import { useRouter } from 'next/dist/client/router'
 import { format } from 'date-fns';
 import { fetchListings } from '../helper.js';
 import InfoCard from '../components/InfoCard';
+import MapBox from '../components/MapBox';
 
 export default function Search() {
   const router = useRouter();
@@ -73,6 +74,9 @@ export default function Search() {
               />
             )
           })}
+        </section>
+        <section className="hidden xl:inline-flex xl:min-w-[600px] xl:h-full">
+          <MapBox />
         </section>
       </main>
       <Footer />

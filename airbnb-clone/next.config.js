@@ -12,6 +12,9 @@ const nextConfig = {
     'cdn.houseplansservices.com',
     'd3544la1u8djza.cloudfront.net',
     "a0.muscache.com"]
+  },
+  env: {
+    mapbox_key: "pk.eyJ1IjoidGlueXl1dXNoYSIsImEiOiJjbGR4cGttNmgwajgyM3BwNzJtNnduaWliIn0.cCAwM4jOvDnZUJ-eh4ierQ",
   }
 }
 
