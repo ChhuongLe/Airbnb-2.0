@@ -12,7 +12,8 @@ export default function Search() {
   const router = useRouter();
   const {location, startDate, endDate, numberOfGuests} = router.query;
   const [data, setData] = useState([]);
-  const [numItems, setNumItems] = useState(10);
+  const [startItems, setStartItems] = useState(0);
+  const [endItems, setEndItems] = useState(10);
 
   let formattedLocation = location.toLowerCase().replace(/\s/g, '');
   let lengthOfStay = 0;
@@ -36,6 +37,16 @@ export default function Search() {
 
   let numDays = (eDate.getTime() - sDate.getTime()) / (1000 * 3600 * 24);
 
+  const moveForward = () => {
+    setStartItems(startItems-10);
+    setEndItems(endItems-10);
+  }
+
+  const movePrev = () => {
+    setStartItems(startItems+10);
+    setEndItems(endItems+10);
+  }
+
   return(
     <div className="h-full">
       <Header placeholder={`${location} | ${range} | ${numberOfGuests} guests`} />
@@ -50,7 +61,7 @@ export default function Search() {
             <p className="button">Rooms and Beds</p>
             <p className="button">More Filters</p>
           </div>
-          {data.slice(0, numItems).map(el => {
+          {data.slice(startItems, endItems).map(el => {
             return (
               <InfoCard
                 key={el.id}
@@ -69,6 +80,11 @@ export default function Search() {
               />
             )
           })}
+          {/* Add page numbers */}
+          <div>
+            <button onClick={moveForward}>Previous</button>
+            <button onClick={movePrev}>Next</button>
+          </div>
         </section>
         <section className="hidden xl:inline-flex xl:min-w-[600px]">
           <MapBox />
