@@ -16,6 +16,7 @@ export default function Search() {
   const [endItems, setEndItems] = useState(10);
 
   let formattedLocation = location.toLowerCase().replace(/\s/g, '');
+  console.log(formattedLocation);
   let lengthOfStay = 0;
 
   useEffect(()=> {

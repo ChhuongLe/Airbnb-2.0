@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import Image from 'next/image';
 import Header from '../components/Header';
@@ -9,7 +11,7 @@ import Footer from '../components/Footer';
 import {
   fetchCategory,
   fetchExplore,
-} from '../helper.js'
+} from '../helper.js';
 
 export default function Home({exploreData, categories, listingData}) {
   return (
@@ -47,6 +49,9 @@ export default function Home({exploreData, categories, listingData}) {
               <LargeCard
                 img="https://links.papareact.com/4cj"
                 title="the Greatest Outdoors"
+
+
+
                 description="Wishlists curated by Airbnb"
                 buttonText="Get Inspired"
               />
