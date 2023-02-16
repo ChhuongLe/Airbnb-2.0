@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS
-"listings";
+  "listings";
+
 CREATE TABLE "listings" (
   "id" BIGINT NOT NULL,
   "city_id" INTEGER NOT NULL,
@@ -19,7 +20,7 @@ CREATE TABLE "listings" (
   "num_bathrooms" TEXT,
   "num_bedrooms" SMALLINT DEFAULT 1,
   "num_beds" SMALLINT DEFAULT 1,
-  "amenities" TEXT [],
+  "amenities" jsonb NOT NULL,
   "price" TEXT,
   "rating" REAL DEFAULT 1,
   PRIMARY KEY ("id")

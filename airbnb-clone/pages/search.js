@@ -67,7 +67,7 @@ export default function Search() {
                 key={el.id}
                 title={el.title}
                 type={el.property_type}
-                image={el.image_url}
+                image={el.picture_url}
                 price={el.price}
                 rating={el.rating}
                 neighborhood={el.neighborhood}
