@@ -15,7 +15,7 @@ export default function MapBox() {
       mapStyle='mapbox://styles/tinyyuusha/cldxpqlob000201m2r8cnxj36'
       mapboxAccessToken={process.env.mapbox_key}
       {...viewport}
-      onViewportChange={viewState => setViewport(viewState)}
+      onViewportChange={(viewState) => setViewport(viewState)}
     >
     </ReactMapGL>
   )

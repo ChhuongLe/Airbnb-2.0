@@ -1,12 +1,5 @@
 DROP TABLE IF EXISTS
-"listings", "cities";
-
-CREATE TABLE "cities" (
-  "id" INTEGER NOT NULL,
-  "city" TEXT,
-  PRIMARY KEY("id")
-);
-
+"listings";
 CREATE TABLE "listings" (
   "id" BIGINT NOT NULL,
   "city_id" INTEGER NOT NULL,
@@ -31,13 +24,7 @@ CREATE TABLE "listings" (
 );
 
 -- Load data into listings table
-COPY "cities"("id", "city")
-FROM '/home/chhuongle/listings/cities.csv'
-WITH DELIMITER ','
-CSV HEADER;
-
--- Load data into listings table
-COPY "listings"("id","city_id","city","listing_url","title", "description", "image_url", "host_name", "host_url", "neighborhood", "long", "lat", "property_type", "room_type", "accomodates", "num_bedrooms", "num_beds", "price", "rating")
-FROM '/home/chhuongle/listings/listings_edit.csv'
+COPY "listings"("id","city_id","city","listing_url","name", "neighborhood_overview", "picture_url", "host_name", "host_url", "neighborhood", "long", "lat", "property_type", "room_type", "accomodates", "num_bedrooms", "num_beds", "amenities", "price", "rating")
+FROM '/home/chhuongle/listings/listingdata.csv'
 WITH DELIMITER ','
 CSV HEADER;
