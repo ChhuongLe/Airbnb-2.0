@@ -3,15 +3,17 @@ import { useRouter } from 'next/dist/client/router';
 
 export default function smallCard({ img, location, distance }) {
   const router = useRouter();
-  let newDate = new Date();
+  let startDate = new Date();
+  let endDate = new Date(startDate.getTime() + (24 * 60 * 60* 1000));
+  console.log(endDate);
 
   const handleClick = (location) => {
     router.push({
       pathname: '/search',
       query:{
         location: location,
-        startDate: newDate.toISOString(),
-        endDate: newDate.toISOString(),
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
         numberOfGuests: 1,
       }
     })

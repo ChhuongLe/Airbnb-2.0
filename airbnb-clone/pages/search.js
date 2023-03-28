@@ -28,8 +28,8 @@ export default function Search() {
       });
   },[]);
 
-  const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
-  const formattedEndDate = format(new Date(endDate), "dd MMMM yy")
+  const formattedStartDate = format(new Date(startDate), "MMM dd, yyyy");
+  const formattedEndDate = format(new Date(endDate), "MMM dd, yyyy")
   const range = `${formattedStartDate} to ${formattedEndDate}`
 
   const sDate = new Date(startDate)
