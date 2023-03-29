@@ -51,7 +51,7 @@ export default function Search() {
     <div className="h-full">
       <Header placeholder={`${location} | ${range} | ${numberOfGuests} guests`} />
       <main className="flex">
-        <section className="flex-grow pt-14 px-5">
+        <div className="flex-grow-1 xl:w-9/12 pt-14 px-5">
           <p className="text-xs">300+ Stays from {range} - for {numberOfGuests} guest(s)</p>
           <h1 className="text-3xl font-semibold mt-2 mb-6">Stays in {location}</h1>
           <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
@@ -85,10 +85,10 @@ export default function Search() {
             <button onClick={moveForward}>Previous</button>
             <button onClick={movePrev}>Next</button>
           </div>
-        </section>
-        <section className="hidden xl:inline-flex xl:min-w-[600px]">
+        </div>
+        <div className="hidden xl:inline-flex xl:sticky xl:top-0 xl:h-screen xl:max-w-[600px]">
           <MapBox />
-        </section>
+        </div>
       </main>
       <Footer />
     </div>

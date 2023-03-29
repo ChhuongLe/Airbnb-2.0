@@ -11,12 +11,12 @@ export default function MapBox() {
       }}
       style={{
         width: "100vw",
-        height: "100vh"
+        height: "100vh",
+        position: "relative"
       }}
       mapStyle='mapbox://styles/tinyyuusha/clfsu443i000001pcnvfcj3ky'
       mapboxAccessToken={process.env.mapbox_key}
     >
-      <NavigationControl />
     </Map>
   )
 }
